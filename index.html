@@ -5,39 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SAP Candidate Portal</title>
 <style>
-/* ---------- General Styles ---------- */
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; line-height:1.6; background:#f4f7f8; color:#333; }
 a { text-decoration:none; color:#0073e6; }
 h1,h2 { color:#333; }
-/* ---------- Navigation ---------- */
 nav { position: sticky; top:0; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
 nav a { margin:0 20px; font-weight:bold; color:#0073e6; }
 nav a:hover { text-decoration:underline; }
-/* ---------- Hero Section ---------- */
 header { background:linear-gradient(135deg, #0073e6, #00b0ff); color:white; padding:100px 20px; text-align:center; }
 header h1 { font-size:3em; margin:0; }
 header p { font-size:1.3em; margin-top:15px; }
-/* ---------- Sections ---------- */
 section { padding:80px 20px; max-width:1000px; margin:0 auto; }
 section:nth-child(even) { background:#f9f9f9; }
-/* ---------- Candidate Submission ---------- */
 .apply-container { background:white; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); }
 iframe { width:100%; min-height:600px; border:none; }
-/* ---------- Candidate Search Table ---------- */
 #search-candidates table { width:100%; border-collapse:collapse; margin-top:20px; }
 #search-candidates th, #search-candidates td { border:1px solid #ddd; padding:10px; text-align:left; }
 #search-candidates th { background-color:#0073e6; color:white; }
 .filter-section { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:15px; }
 .filter-section select { padding:5px; border-radius:6px; border:1px solid #ccc; }
-/* ---------- Footer ---------- */
 footer { background:#333; color:white; text-align:center; padding:20px; }
-/* ---------- Responsive ---------- */
 @media(max-width:600px){ header h1{ font-size:2em; } nav{ flex-direction:column; } nav a{ margin:10px 0; } .filter-section{ flex-direction:column; } }
 </style>
 </head>
 <body>
 
-<!-- Navigation -->
 <nav>
   <a href="#home">Home</a>
   <a href="#submit">Candidate Submission</a>
@@ -45,33 +36,26 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
   <a href="#about">About</a>
 </nav>
 
-<!-- Hero Section -->
 <header id="home">
   <h1>Welcome to SAP Candidate Portal</h1>
   <p>Submit your resume or find the best SAP candidates easily!</p>
 </header>
 
-<!-- Candidate Submission Section -->
 <section id="submit">
   <h2>Submit Your Details & Resume</h2>
   <p>Fill out the form below to be considered for future SAP opportunities.</p>
   <div class="apply-container">
     <iframe
       src="https://docs.google.com/forms/d/e/1FAIpQLSdZVDm8IioXI2EOJCIED7P71w4LyljkDz1dP0x8FZBkkVGzDQ/viewform?embedded=true"
-      width="100%"
-      height="900"
-      frameborder="0"
-      marginheight="0"
-      marginwidth="0">
+      width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">
       Loading…
     </iframe>
   </div>
 </section>
 
-<!-- Candidate Search Section -->
 <section id="search-candidates">
   <h2>Search Candidates</h2>
-  <p>Companies can filter and search for candidates based on experience, module, location, salary, and notice period.</p>
+  <p>Companies can filter and search for candidates based on experience, module, location, salary, notice period.</p>
 
   <div class="filter-section">
     <select id="filter-experience">
@@ -119,13 +103,10 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
         <th>Resume</th>
       </tr>
     </thead>
-    <tbody>
-      <!-- Candidate rows will be dynamically loaded here -->
-    </tbody>
+    <tbody></tbody>
   </table>
 </section>
 
-<!-- About Section -->
 <section id="about">
   <h2>About</h2>
   <p>This portal connects SAP candidates with companies efficiently. We screen candidates and assign ratings based on our process to help companies find the right talent quickly.</p>
@@ -137,11 +118,11 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const csvUrl = "https://opensheet.elk.sh/2PACX-1vRucf2flrbiCQPL_76ecbYS079pqnLoSsV0m9Gtfmh5MFthCD_SLxAoHN2LguDJ2hPtuYJCb-z3lRZ1/Form%20Responses%201";
+  const jsonUrl = "https://opensheet.elk.sh/2PACX-1vRucf2flrbiCQPL_76ecbYS079pqnLoSsV0m9Gtfmh5MFthCD_SLxAoHN2LguDJ2hPtuYJCb-z3lRZ1/Form%20Responses%201";
   const tableBody = document.querySelector('#candidates-table tbody');
   const filters = { experience:'', module:'', location:'', salary:'', notice:'' };
 
-  fetch(csvUrl)
+  fetch(jsonUrl)
     .then(res => res.json())
     .then(data => {
       data.forEach(c => {
