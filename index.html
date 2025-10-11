@@ -1,167 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAP Job Portal</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-      background: #f4f7f8;
-      color: #333;
-    }
-    a { text-decoration: none; color: #0073e6; }
-    h1, h2 { color: #333; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Candidate Portal</title>
+<style>
+/* ---------- General Styles ---------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0; padding: 0;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  background: #f4f7f8;
+  color: #333;
+}
+a { text-decoration: none; color: #0073e6; }
+h1, h2 { color: #333; }
 
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
-      z-index: 1000;
-    }
-    nav a {
-      margin: 0 20px;
-      font-weight: bold;
-      color: #0073e6;
-    }
-    nav a:hover { text-decoration: underline; }
+/* ---------- Navigation ---------- */
+nav {
+  position: sticky;
+  top: 0;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 1000;
+}
+nav a {
+  margin: 0 20px;
+  font-weight: bold;
+  color: #0073e6;
+}
+nav a:hover { text-decoration: underline; }
 
-    /* Hero Section */
-    header {
-      background: linear-gradient(135deg, #0073e6, #00b0ff);
-      color: white;
-      padding: 100px 20px;
-      text-align: center;
-    }
-    header h1 { font-size: 3em; margin: 0; }
-    header p { font-size: 1.3em; margin-top: 15px; }
+/* ---------- Hero Section ---------- */
+header {
+  background: linear-gradient(135deg, #0073e6, #00b0ff);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+}
+header h1 { font-size: 3em; margin: 0; }
+header p { font-size: 1.3em; margin-top: 15px; }
 
-    /* Sections */
-    section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    section:nth-child(even) { background: #f9f9f9; }
+/* ---------- Sections ---------- */
+section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
+section:nth-child(even) { background: #f9f9f9; }
 
-    /* Job Listings */
-    .job-listings {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
-    .job-card {
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 12px;
-      background: white;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .job-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .job-card h3 { margin-top: 0; }
-    .job-card a { display: inline-block; margin-top: 10px; color: #0073e6; font-weight: bold; }
+/* ---------- Candidate Submission ---------- */
+.apply-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+iframe { width: 100%; min-height: 600px; border: none; }
 
-    /* Apply Section */
-    .apply-container {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    iframe { width: 100%; min-height: 500px; border: none; }
+/* ---------- Candidate Search Table ---------- */
+#search-candidates table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+#search-candidates th, #search-candidates td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+#search-candidates th {
+  background-color: #0073e6;
+  color: white;
+}
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.filter-section select {
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
 
-    /* About / Contact */
-    #about p { font-size: 1.1em; }
+/* ---------- Footer ---------- */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
 
-    /* Footer */
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Responsive */
-    @media(max-width:600px){
-      header h1 { font-size: 2em; }
-      nav { flex-direction: column; }
-      nav a { margin: 10px 0; }
-    }
-  </style>
+/* ---------- Responsive ---------- */
+@media(max-width:600px){
+  header h1 { font-size: 2em; }
+  nav { flex-direction: column; }
+  nav a { margin: 10px 0; }
+  .filter-section { flex-direction: column; }
+}
+</style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#jobs">Jobs</a>
-    <a href="#apply">Apply</a>
-    <a href="#about">About</a>
-  </nav>
+<!-- Navigation -->
+<nav>
+  <a href="#home">Home</a>
+  <a href="#submit">Candidate Submission</a>
+  <a href="#search-candidates">Search Candidates</a>
+  <a href="#about">About</a>
+</nav>
 
-  <!-- Hero Section -->
-  <header id="home">
-    <h1>Welcome to SAP Job Portal</h1>
-    <p>Connecting SAP Professionals with Top Employers — Fast, Simple, Free</p>
-  </header>
+<!-- Hero Section -->
+<header id="home">
+  <h1>Welcome to SAP Candidate Portal</h1>
+  <p>Submit your resume or find the best SAP candidates easily!</p>
+</header>
 
-  <!-- Job Listings Section -->
-  <section id="jobs">
-    <h2>Current SAP Job Openings</h2>
-    <div class="job-listings">
-      <div class="job-card">
-        <h3>SAP FICO Consultant</h3>
-        <p>Company: Tech Solutions Pvt Ltd</p>
-        <p>Location: Bangalore, India</p>
-        <a href="#apply">Apply Now</a>
-      </div>
-      <div class="job-card">
-        <h3>SAP MM Analyst</h3>
-        <p>Company: GlobalTech</p>
-        <p>Location: Hyderabad, India</p>
-        <a href="#apply">Apply Now</a>
-      </div>
-      <div class="job-card">
-        <h3>SAP ABAP Developer</h3>
-        <p>Company: InfoSys</p>
-        <p>Location: Pune, India</p>
-        <a href="#apply">Apply Now</a>
-      </div>
-    </div>
-  </section>
+<!-- Candidate Submission Section -->
+<section id="submit">
+  <h2>Submit Your Details & Resume</h2>
+  <p>Fill out the form below to be considered for future SAP opportunities.</p>
+  <div class="apply-container">
+    <!-- Replace YOUR_GOOGLE_FORM_LINK_HERE with your form link -->
+    <iframe https://docs.google.com/forms/d/e/1FAIpQLSdZVDm8IioXI2EOJCIED7P71w4LyljkDz1dP0x8FZBkkVGzDQ/viewform?usp=sf_link></iframe>
+  </div>
+</section>
 
-  <!-- Apply Section -->
-  <section id="apply">
-    <h2>Apply for SAP Jobs</h2>
-    <p>Submit your details below, and we will connect you with top SAP employers.</p>
-    <div class="apply-container">
-      <!-- Replace with your Google Form link -->
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZVDm8IioXI2EOJCIED7P71w4LyljkDz1dP0x8FZBkkVGzDQ/viewform?usp=sf_link" width="640" height="480" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
-  </section>
+<!-- Candidate Search Section -->
+<section id="search-candidates">
+  <h2>Search Candidates</h2>
+  <p>Companies can filter and search for candidates based on experience, module, location, salary, notice period, and rating.</p>
 
-  <!-- About / Contact Section -->
-  <section id="about">
-    <h2>About / Contact</h2>
-    <p>This portal is dedicated to connecting SAP professionals with top employers across India. For inquiries, email us at <a href="mailto:contact@sapjobportal.com">contact@sapjobportal.com</a>.</p>
-  </section>
+  <div class="filter-section">
+    <select id="filter-experience">
+      <option value="">Experience</option>
+      <option value="0-2">0-2 years</option>
+      <option value="3-5">3-5 years</option>
+      <option value="6+">6+ years</option>
+    </select>
+    <select id="filter-module">
+      <option value="">SAP Module</option>
+      <option value="FICO">FICO</option>
+      <option value="MM">MM</option>
+      <option value="SD">SD</option>
+      <option value="ABAP">ABAP</option>
+    </select>
+    <select id="filter-location">
+      <option value="">Location</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Hyderabad">Hyderabad</option>
+      <option value="Pune">Pune</option>
+    </select>
+    <select id="filter-salary">
+      <option value="">Salary</option>
+      <option value="0-5">0-5 LPA</option>
+      <option value="5-10">5-10 LPA</option>
+      <option value="10+">10+ LPA</option>
+    </select>
+    <select id="filter-notice">
+      <option value="">Notice Period</option>
+      <option value="Immediate">Immediate</option>
+      <option value="30 Days">30 Days</option>
+      <option value="60 Days">60 Days</option>
+    </select>
+    <select id="filter-rating">
+      <option value="">Rating</option>
+      <option value="A+">A+</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+  </div>
 
-  <footer>
-    &copy; 2025 SAP Job Portal. All Rights Reserved.
-  </footer>
+  <table id="candidates-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Module</th>
+        <th>Experience</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Notice Period</th>
+        <th>Rating</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Candidate rows will be dynamically loaded here -->
+    </tbody>
+  </table>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <h2>About</h2>
+  <p>This portal connects SAP candidates with companies efficiently. We screen candidates and assign a rating based on our interview process to help companies find the right talent quickly.</p>
+</section>
+
+<footer>
+  &copy; 2025 SAP Candidate Portal. All Rights Reserved.
+</footer>
+
+<!-- JavaScript for dynamic candidate table -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const csvUrl = https://docs.google.com/spreadsheets/d/e/2PACX-1vRucf2flrbiCQPL_76ecbYS079pqnLoSsV0m9Gtfmh5MFthCD_SLxAoHN2LguDJ2hPtuYJCb-z3lRZ1/pub?gid=325922953&single=true&output=csv; // Replace with your published Google Sheets CSV URL
+  const tableBody = document.querySelector('#candidates-table tbody');
+  const filters = {
+    experience: '',
+    module: '',
+    location: '',
+    salary: '',
+    notice: '',
+    rating: ''
+  };
+
+  // Fetch CSV data
+  fetch(csvUrl)
+    .then(response => response.text())
+    .then(data => {
+      const rows = data.split('\n').slice(1); // Skip header row
+      rows.forEach(row => {
+        const cols = row.split(',');
+        if (cols.length > 1) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${cols[0]}</td>
+            <td>${cols[3]}</td>
+            <td>${cols[4]}</td>
+            <td>${cols[5]}</td>
+            <td>${cols[6]}</td>
+            <td>${cols[7]}</td>
+            <td>${cols[8]}</td>
+            <td><a href="${cols[9]}" target="_blank">View</a></td>
+          `;
+          tableBody.appendChild(tr);
+        }
+      });
+    });
+
+  // Filter function
+  function applyFilters() {
+    const rows = tableBody.querySelectorAll('tr');
+    rows.forEach(row => {
+      const cells = row.querySelectorAll('td');
+      const matches = Object.keys(filters).every((filter, index) => {
+        if (!filters[filter]) return true;
+        const cellText = cells[index].innerText.toLowerCase();
+        return cellText.includes(filters[filter].toLowerCase());
+      });
+      row.style.display = matches ? '' : 'none';
+    });
+  }
+
+  // Event listeners for filters
+  document.querySelectorAll('.filter-section select').forEach(select => {
+    select.addEventListener('change', function() {
+      filters[this.id.replace('filter-', '')] = this.value;
+      applyFilters();
+    });
+  });
+});
+</script>
 
 </body>
 </html>
