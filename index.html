@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAP Job Portal</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      background: #f4f7f8;
+      color: #333;
+    }
+    a { text-decoration: none; color: #0073e6; }
+    h1, h2 { color: #333; }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 20px;
+      font-weight: bold;
+      color: #0073e6;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(135deg, #0073e6, #00b0ff);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 3em; margin: 0; }
+    header p { font-size: 1.3em; margin-top: 15px; }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    section:nth-child(even) { background: #f9f9f9; }
+
+    /* Job Listings */
+    .job-listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .job-card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 12px;
+      background: white;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .job-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .job-card h3 { margin-top: 0; }
+    .job-card a { display: inline-block; margin-top: 10px; color: #0073e6; font-weight: bold; }
+
+    /* Apply Section */
+    .apply-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    iframe { width: 100%; min-height: 500px; border: none; }
+
+    /* About / Contact */
+    #about p { font-size: 1.1em; }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Responsive */
+    @media(max-width:600px){
+      header h1 { font-size: 2em; }
+      nav { flex-direction: column; }
+      nav a { margin: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#jobs">Jobs</a>
+    <a href="#apply">Apply</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home">
+    <h1>Welcome to SAP Job Portal</h1>
+    <p>Connecting SAP Professionals with Top Employers — Fast, Simple, Free</p>
+  </header>
+
+  <!-- Job Listings Section -->
+  <section id="jobs">
+    <h2>Current SAP Job Openings</h2>
+    <div class="job-listings">
+      <div class="job-card">
+        <h3>SAP FICO Consultant</h3>
+        <p>Company: Tech Solutions Pvt Ltd</p>
+        <p>Location: Bangalore, India</p>
+        <a href="#apply">Apply Now</a>
+      </div>
+      <div class="job-card">
+        <h3>SAP MM Analyst</h3>
+        <p>Company: GlobalTech</p>
+        <p>Location: Hyderabad, India</p>
+        <a href="#apply">Apply Now</a>
+      </div>
+      <div class="job-card">
+        <h3>SAP ABAP Developer</h3>
+        <p>Company: InfoSys</p>
+        <p>Location: Pune, India</p>
+        <a href="#apply">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply Section -->
+  <section id="apply">
+    <h2>Apply for SAP Jobs</h2>
+    <p>Submit your details below, and we will connect you with top SAP employers.</p>
+    <div class="apply-container">
+      <!-- Replace with your Google Form link -->
+      <iframe src=" https://forms.gle/XtMVoDGayMsdsQCe8"></iframe>
+    </div>
+  </section>
+
+  <!-- About / Contact Section -->
+  <section id="about">
+    <h2>About / Contact</h2>
+    <p>This portal is dedicated to connecting SAP professionals with top employers across India. For inquiries, email us at <a href="mailto:contact@sapjobportal.com">contact@sapjobportal.com</a>.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 SAP Job Portal. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
