@@ -1,180 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SAP Candidate Portal</title>
 <style>
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; line-height:1.6; background:#f4f7f8; color:#333; scroll-behavior:smooth; }
+/* ---------- General Styles ---------- */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; line-height:1.6; background:#f4f7f8; color:#333; }
 a { text-decoration:none; color:#0073e6; }
 h1,h2 { color:#333; }
-nav { position:sticky; top:0; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
+/* ---------- Navigation ---------- */
+nav { position: sticky; top:0; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
 nav a { margin:0 20px; font-weight:bold; color:#0073e6; }
 nav a:hover { text-decoration:underline; }
-header { background:linear-gradient(135deg,#0073e6,#00b0ff); color:white; padding:100px 20px; text-align:center; }
+/* ---------- Hero Section ---------- */
+header { background:linear-gradient(135deg, #0073e6, #00b0ff); color:white; padding:100px 20px; text-align:center; }
 header h1 { font-size:3em; margin:0; }
 header p { font-size:1.3em; margin-top:15px; }
+/* ---------- Sections ---------- */
 section { padding:80px 20px; max-width:1000px; margin:0 auto; }
 section:nth-child(even) { background:#f9f9f9; }
+/* ---------- Candidate Submission ---------- */
 .apply-container { background:white; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); }
 iframe { width:100%; min-height:600px; border:none; }
+/* ---------- Candidate Search Table ---------- */
 #search-candidates table { width:100%; border-collapse:collapse; margin-top:20px; }
-#search-candidates th,#search-candidates td { border:1px solid #ddd; padding:10px; text-align:left; }
+#search-candidates th, #search-candidates td { border:1px solid #ddd; padding:10px; text-align:left; }
 #search-candidates th { background-color:#0073e6; color:white; }
 .filter-section { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:15px; }
 .filter-section select { padding:5px; border-radius:6px; border:1px solid #ccc; }
+/* ---------- Footer ---------- */
 footer { background:#333; color:white; text-align:center; padding:20px; }
-@media (max-width:600px) { header h1 { font-size:2em; } nav { flex-direction:column; } nav a { margin:10px 0; } .filter-section { flex-direction:column; } }
+/* ---------- Responsive ---------- */
+@media(max-width:600px){ header h1{ font-size:2em; } nav{ flex-direction:column; } nav a{ margin:10px 0; } .filter-section{ flex-direction:column; } }
 </style>
 </head>
 <body>
 
+<!-- Navigation -->
 <nav>
-<a href="#home">Home</a>
-<a href="#submit">Candidate Submission</a>
-<a href="#search-candidates">Search Candidates</a>
-<a href="#about">About</a>
+  <a href="#home">Home</a>
+  <a href="#submit">Candidate Submission</a>
+  <a href="#search-candidates">Search Candidates</a>
+  <a href="#about">About</a>
 </nav>
 
+<!-- Hero Section -->
 <header id="home">
-<h1>Welcome to SAP Candidate Portal</h1>
-<p>Submit your resume or find the best SAP candidates easily!</p>
+  <h1>Welcome to SAP Candidate Portal</h1>
+  <p>Submit your resume or find the best SAP candidates easily!</p>
 </header>
 
+<!-- Candidate Submission Section -->
 <section id="submit">
-<h2>Submit Your Details & Resume</h2>
-<p>Fill out the form below to be considered for future SAP opportunities.</p>
-<div class="apply-container">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdZVDm8IioXI2EOJCIED7P71w4LyljkDz1dP0x8FZBkkVGzDQ/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-</div>
+  <h2>Submit Your Details & Resume</h2>
+  <p>Fill out the form below to be considered for future SAP opportunities.</p>
+  <div class="apply-container">
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdZVDm8IioXI2EOJCIED7P71w4LyljkDz1dP0x8FZBkkVGzDQ/viewform?embedded=true"
+      width="100%"
+      height="900"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0">
+      Loading…
+    </iframe>
+  </div>
 </section>
 
+<!-- Candidate Search Section -->
 <section id="search-candidates">
-<h2>Search Candidates</h2>
-<p>Companies can filter and search for candidates based on experience, module, location, salary, notice period, and rating.</p>
+  <h2>Search Candidates</h2>
+  <p>Companies can filter and search for candidates based on experience, module, location, salary, and notice period.</p>
 
-<div class="filter-section">
-<select id="filter-experience">
-<option value="">Experience</option>
-<option value="0-2">0-2 years</option>
-<option value="3-5">3-5 years</option>
-<option value="6+">6+ years</option>
-</select>
-<select id="filter-module">
-<option value="">SAP Module</option>
-<option value="FICO">FICO</option>
-<option value="MM">MM</option>
-<option value="SD">SD</option>
-<option value="ABAP">ABAP</option>
-</select>
-<select id="filter-location">
-<option value="">Location</option>
-<option value="Bangalore">Bangalore</option>
-<option value="Hyderabad">Hyderabad</option>
-<option value="Pune">Pune</option>
-</select>
-<select id="filter-salary">
-<option value="">Salary</option>
-<option value="0-5">0-5 LPA</option>
-<option value="5-10">5-10 LPA</option>
-<option value="10+">10+ LPA</option>
-</select>
-<select id="filter-notice">
-<option value="">Notice Period</option>
-<option value="Immediate">Immediate</option>
-<option value="30 Days">30 Days</option>
-<option value="60 Days">60 Days</option>
-</select>
-<select id="filter-rating">
-<option value="">Rating</option>
-<option value="A+">A+</option>
-<option value="A">A</option>
-<option value="B">B</option>
-<option value="C">C</option>
-</select>
-</div>
+  <div class="filter-section">
+    <select id="filter-experience">
+      <option value="">Experience</option>
+      <option value="0-2">0-2 years</option>
+      <option value="3-5">3-5 years</option>
+      <option value="6+">6+ years</option>
+    </select>
+    <select id="filter-module">
+      <option value="">SAP Module</option>
+      <option value="FICO">FICO</option>
+      <option value="MM">MM</option>
+      <option value="SD">SD</option>
+      <option value="ABAP">ABAP</option>
+    </select>
+    <select id="filter-location">
+      <option value="">Location</option>
+      <option value="Bangalore">Bangalore</option>
+      <option value="Hyderabad">Hyderabad</option>
+      <option value="Pune">Pune</option>
+    </select>
+    <select id="filter-salary">
+      <option value="">Salary</option>
+      <option value="0-5">0-5 LPA</option>
+      <option value="5-10">5-10 LPA</option>
+      <option value="10+">10+ LPA</option>
+    </select>
+    <select id="filter-notice">
+      <option value="">Notice Period</option>
+      <option value="Immediate">Immediate</option>
+      <option value="30 Days">30 Days</option>
+      <option value="60 Days">60 Days</option>
+    </select>
+  </div>
 
-<table id="candidates-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Module</th>
-<th>Experience</th>
-<th>Location</th>
-<th>Salary</th>
-<th>Notice Period</th>
-<th>Rating</th>
-<th>Resume</th>
-</tr>
-</thead>
-<tbody></tbody>
-</table>
+  <table id="candidates-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Module</th>
+        <th>Experience</th>
+        <th>Location</th>
+        <th>Salary</th>
+        <th>Notice Period</th>
+        <th>Resume</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Candidate rows will be dynamically loaded here -->
+    </tbody>
+  </table>
 </section>
 
+<!-- About Section -->
 <section id="about">
-<h2>About</h2>
-<p>This portal connects SAP candidates with companies efficiently. We screen candidates and assign a rating based on our interview process to help companies find the right talent quickly.</p>
+  <h2>About</h2>
+  <p>This portal connects SAP candidates with companies efficiently. We screen candidates and assign ratings based on our process to help companies find the right talent quickly.</p>
 </section>
 
 <footer>
-&copy; 2025 SAP Candidate Portal. All Rights Reserved.
+  &copy; 2025 SAP Candidate Portal. All Rights Reserved.
 </footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const sheetUrl = "https://opensheet.elk.sh/2PACX-1vRucf2flrbiCQPL_76ecbYS079pqnLoSsV0m9Gtfmh5MFthCD_SLxAoHN2LguDJ2hPtuYJCb-z3lRZ1/Form%20Responses%201";
+  const csvUrl = "https://opensheet.elk.sh/2PACX-1vRucf2flrbiCQPL_76ecbYS079pqnLoSsV0m9Gtfmh5MFthCD_SLxAoHN2LguDJ2hPtuYJCb-z3lRZ1/Form%20Responses%201";
   const tableBody = document.querySelector('#candidates-table tbody');
-  const filters = { experience:'', module:'', location:'', salary:'', notice:'', rating:'' };
+  const filters = { experience:'', module:'', location:'', salary:'', notice:'' };
 
-  function loadCandidates() {
-    fetch(sheetUrl)
+  fetch(csvUrl)
     .then(res => res.json())
     .then(data => {
-      tableBody.innerHTML = "";
-      data.forEach(candidate => {
+      data.forEach(c => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td>${candidate["Name"] || ""}</td>
-          <td>${candidate["SAP Modules Expertise"] || ""}</td>
-          <td>${candidate["Experience (Years)"] || ""}</td>
-          <td>${candidate["Current Location"] || ""}</td>
-          <td>${candidate["Expected Salary Package"] || ""}</td>
-          <td>${candidate["Notice Period"] || ""}</td>
-          <td>${candidate["Rating"] || ""}</td>
-          <td><a href="${candidate["Resume Link"] || "#"}" target="_blank">View</a></td>
+          <td>${c["Name"] || ""}</td>
+          <td>${c["Module"] || ""}</td>
+          <td>${c["Experience"] || ""}</td>
+          <td>${c["Location"] || ""}</td>
+          <td>${c["Salary"] || ""}</td>
+          <td>${c["Notice Period"] || ""}</td>
+          <td><a href="${c["Resume Upload"] || "#"}" target="_blank">View</a></td>
         `;
         tableBody.appendChild(tr);
       });
-      applyFilters();
     })
     .catch(err => console.error("Error loading candidate data:", err));
-  }
 
   function applyFilters() {
     const rows = tableBody.querySelectorAll('tr');
     rows.forEach(row => {
       const cells = row.querySelectorAll('td');
-      const matches = Object.keys(filters).every((filter, idx) => {
-        if(!filters[filter]) return true;
-        return cells[idx].innerText.toLowerCase().includes(filters[filter].toLowerCase());
-      });
+      const matches = 
+        (!filters.experience || cells[2].innerText.includes(filters.experience)) &&
+        (!filters.module || cells[1].innerText.includes(filters.module)) &&
+        (!filters.location || cells[3].innerText.includes(filters.location)) &&
+        (!filters.salary || cells[4].innerText.includes(filters.salary)) &&
+        (!filters.notice || cells[5].innerText.includes(filters.notice));
       row.style.display = matches ? '' : 'none';
     });
   }
 
   document.querySelectorAll('.filter-section select').forEach(select => {
     select.addEventListener('change', function() {
-      const key = this.id.replace('filter-', '');
-      filters[key] = this.value;
+      filters[this.id.replace('filter-','')] = this.value;
       applyFilters();
     });
   });
-
-  loadCandidates();
-  setInterval(loadCandidates, 60000); // Refresh every 60 seconds
 });
 </script>
 
 </body>
 </html>
-
