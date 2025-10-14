@@ -5,31 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SAP Job Portal</title>
 <style>
-body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; line-height:1.6; background:#f4f7f8; color:#333; }
-a { text-decoration:none; color:#0073e6; }
-h1,h2 { color:#333; }
-nav { position:sticky; top:0; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
-nav a { margin:0 20px; font-weight:bold; color:#0073e6; }
-nav a:hover { text-decoration:underline; }
-header { background:linear-gradient(135deg,#0073e6,#00b0ff); color:white; padding:100px 20px; text-align:center; }
-header h1 { font-size:3em; margin:0; }
-header p { font-size:1.3em; margin-top:15px; }
-section { padding:80px 20px; max-width:1000px; margin:0 auto; }
-section:nth-child(even){ background:#f9f9f9; }
-.apply-container, .job-container { background:white; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); }
-iframe { width:100%; min-height:600px; border:none; }
-table { width:100%; border-collapse:collapse; margin-top:20px; }
-th, td { border:1px solid #ddd; padding:10px; text-align:left; }
-th { background-color:#0073e6; color:white; }
-.filter-section { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:15px; }
-.filter-section select { padding:5px; border-radius:6px; border:1px solid #ccc; }
-footer { background:#333; color:white; text-align:center; padding:20px; }
-@media(max-width:600px){
- header h1{ font-size:2em; }
- nav{ flex-direction:column; }
- nav a{ margin:10px 0; }
- .filter-section{ flex-direction:column; }
-}
+  body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; line-height:1.6; background:#f4f7f8; color:#333; }
+  a { text-decoration:none; color:#0073e6; }
+  h1,h2 { color:#333; }
+  nav { position:sticky; top:0; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
+  nav a { margin:0 20px; font-weight:bold; color:#0073e6; }
+  nav a:hover { text-decoration:underline; }
+  header { background:linear-gradient(135deg,#0073e6,#00b0ff); color:white; padding:100px 20px; text-align:center; }
+  header h1 { font-size:3em; margin:0; }
+  header p { font-size:1.3em; margin-top:15px; }
+  section { padding:80px 20px; max-width:1000px; margin:0 auto; }
+  section:nth-child(even){ background:#f9f9f9; }
+  .apply-container, .job-container { background:white; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); }
+  iframe { width:100%; min-height:600px; border:none; }
+  table { width:100%; border-collapse:collapse; margin-top:20px; }
+  th, td { border:1px solid #ddd; padding:10px; text-align:left; }
+  th { background-color:#0073e6; color:white; }
+  .filter-section { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:15px; }
+  .filter-section select { padding:5px; border-radius:6px; border:1px solid #ccc; }
+  footer { background:#333; color:white; text-align:center; padding:20px; }
+  @media(max-width:600px){
+    header h1{ font-size:2em; }
+    nav{ flex-direction:column; }
+    nav a{ margin:10px 0; }
+    .filter-section{ flex-direction:column; }
+  }
 </style>
 </head>
 <body>
@@ -48,7 +48,6 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
   <p>Connecting SAP Professionals & Companies Seamlessly!</p>
 </header>
 
-<!-- Candidate Submission -->
 <section id="submit">
   <h2>Submit Your Details & Resume</h2>
   <p>Fill out the form below to be considered for SAP opportunities.</p>
@@ -61,7 +60,6 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
   </div>
 </section>
 
-<!-- Search Candidates -->
 <section id="search-candidates">
   <h2>Search Candidates</h2>
   <p>Filter SAP professionals by experience, module, location, salary, and notice period.</p>
@@ -82,7 +80,6 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
   </table>
 </section>
 
-<!-- Job Submission -->
 <section id="post-job">
   <h2>Post a Job (For Recruiters / Companies)</h2>
   <p>Fill out the job details form below to reach the right SAP professionals.</p>
@@ -95,7 +92,6 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
   </div>
 </section>
 
-<!-- View Jobs -->
 <section id="view-jobs">
   <h2>Open SAP Job Listings</h2>
   <p>Browse available SAP openings from verified recruiters and companies.</p>
@@ -108,7 +104,6 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
   </table>
 </section>
 
-<!-- About -->
 <section id="about">
   <h2>About</h2>
   <p>This portal bridges the gap between SAP professionals and companies. Candidates can showcase their profiles while recruiters post jobs and search efficiently — all synced with Google Sheets in real time.</p>
@@ -121,8 +116,7 @@ footer { background:#333; color:white; text-align:center; padding:20px; }
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ✅ Candidate Google Sheet JSON (replace with your sheet ID)
-  const candidateUrl = "https://opensheet.elk.sh/2PACX-1vRucf2flrbiCQPL_76ecbYS079pqnLoSsV0m9Gtfmh5MFthCD_SLxAoHN2LguDJ2hPtuYJCb-z3lRZ1/Form%20Responses%201";
+  const candidateUrl = "https://opensheet.elk.sh/2PACX-1vQV6t8q11XKosHHTfvJkQGgnWok7sftAdew2ewMLTb0WDIjxyMqMxJ4n-_pXsKRbn2QUBp7xzK0GOTp/Form%20Responses%201";
   const candidateBody = document.querySelector('#candidates-table tbody');
   const filters = { experience:'', module:'', location:'', salary:'', notice:'' };
 
@@ -142,7 +136,8 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         candidateBody.appendChild(tr);
       });
-    });
+    })
+    .catch(err => console.error("Error loading candidate data:", err));
 
   document.querySelectorAll('.filter-section select').forEach(select => {
     select.addEventListener('change', function() {
@@ -161,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // ✅ Job Google Sheet JSON (replace YOUR_JOB_SHEET_ID)
+  // Job listings sheet (replace YOUR_JOB_SHEET_ID)
   const jobUrl = "https://opensheet.elk.sh/YOUR_JOB_SHEET_ID/Form%20Responses%201";
   const jobBody = document.querySelector('#jobs-table tbody');
 
@@ -181,7 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         jobBody.appendChild(tr);
       });
-    });
+    })
+    .catch(err => console.error("Error loading job data:", err));
 });
 </script>
 
