@@ -1,156 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SAP Job Portal</title>
-<style>
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; line-height:1.6; background:#f4f7f8; color:#333; }
-a { text-decoration:none; color:#0073e6; }
-h1,h2 { color:#333; }
-nav { position: sticky; top:0; background:white; box-shadow:0 2px 5px rgba(0,0,0,0.1); display:flex; justify-content:center; padding:10px 0; z-index:1000; }
-nav a { margin:0 20px; font-weight:bold; color:#0073e6; }
-nav a:hover { text-decoration:underline; }
-header { background:linear-gradient(135deg, #0073e6, #00b0ff); color:white; padding:100px 20px; text-align:center; }
-header h1 { font-size:3em; margin:0; }
-header p { font-size:1.3em; margin-top:15px; }
-section { padding:80px 20px; max-width:1000px; margin:0 auto; }
-section:nth-child(even) { background:#f9f9f9; }
-.apply-container { background:white; padding:30px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05); }
-iframe { width:100%; min-height:600px; border:none; }
-table { width:100%; border-collapse:collapse; margin-top:20px; }
-th, td { border:1px solid #ddd; padding:10px; text-align:left; }
-th { background-color:#0073e6; color:white; }
-.filter-section { display:flex; flex-wrap:wrap; gap:15px; margin-bottom:15px; }
-.filter-section select { padding:5px; border-radius:6px; border:1px solid #ccc; }
-footer { background:#333; color:white; text-align:center; padding:20px; }
-@media(max-width:600px){ header h1{ font-size:2em; } nav{ flex-direction:column; } nav a{ margin:10px 0; } .filter-section{ flex-direction:column; } }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAP Job Portal | Home</title>
+
+  <!-- Bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      background-color: white;
+    }
+    .hero h1 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .card-option {
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      padding: 2rem;
+      text-align: center;
+      background-color: white;
+    }
+    .card-option:hover {
+      border-color: #2563eb;
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.15);
+      transform: translateY(-3px);
+    }
+    .btn-primary {
+      background-color: #2563eb;
+      border-color: #2563eb;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1.5rem;
+    }
+    .footer {
+      margin-top: 4rem;
+      color: #94a3b8;
+    }
+  </style>
 </head>
 <body>
+  <section class="hero">
+    <h1>Welcome to the SAP Job Portal</h1>
+    <p class="lead mb-5">Connecting SAP Professionals with Top Companies</p>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#submit">Candidate Submission</a>
-  <a href="#search-candidates">Search Candidates</a>
-  <a href="#job-postings">Job Postings</a>
-  <a href="#about">About</a>
-</nav>
+    <div class="container">
+      <div class="row justify-content-center g-4">
+        <div class="col-md-4">
+          <div class="card-option" onclick="window.location.href='candidate/login.html'">
+            <h4>👩‍💼 Candidate Login</h4>
+            <p>Search jobs, apply, and track your applications</p>
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-option" onclick="window.location.href='company/login.html'">
+            <h4>🏢 Company Login</h4>
+            <p>Post jobs, view candidates, and manage hiring</p>
+            <button class="btn btn-primary">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<header id="home">
-  <h1>Welcome to SAP Job Portal</h1>
-  <p>Submit your resume, post jobs, or find SAP candidates easily!</p>
-</header>
-
-<!-- Candidate Submission Form -->
-<section id="submit">
-  <h2>Submit Your Details & Resume</h2>
-  <p>Fill out the form below to be considered for SAP opportunities.</p>
-  <div class="apply-container">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSdZVDm8IioXI2EOJCIED7P71w4LyljkDz1dP0x8FZBkkVGzDQ/viewform?usp=header"
-      width="100%" height="900">
-      Loading…
-    </iframe>
-  </div>
-</section>
-
-<!-- Search Candidates -->
-<section id="search-candidates">
-  <h2>Search Candidates</h2>
-  <p>Filter candidates based on experience, module, location, salary, availability.</p>
-  <div class="filter-section">
-    <select id="filter-experience">
-      <option value="">Experience</option>
-      <option value="0-2">0-2 years</option>
-      <option value="3-5">3-5 years</option>
-      <option value="6+">6+ years</option>
-    </select>
-    <select id="filter-module">
-      <option value="">SAP Module</option>
-      <option value="FICO">FICO</option>
-      <option value="MM">MM</option>
-      <option value="SD">SD</option>
-      <option value="ABAP">ABAP</option>
-    </select>
-    <select id="filter-location">
-      <option value="">Location</option>
-      <option value="Bangalore">Bangalore</option>
-      <option value="Hyderabad">Hyderabad</option>
-      <option value="Pune">Pune</option>
-    </select>
-    <select id="filter-salary">
-      <option value="">Expected CTC</option>
-      <option value="0-5">0-5 LPA</option>
-      <option value="5-10">5-10 LPA</option>
-      <option value="10+">10+ LPA</option>
-    </select>
-    <select id="filter-notice">
-      <option value="">Availability</option>
-      <option value="Immediate">Immediate</option>
-      <option value="15 Days">15 Days</option>
-      <option value="30 Days">30 Days</option>
-    </select>
-  </div>
-
-  <table id="candidates-table">
-    <thead>
-      <tr>
-        <th>Full Name</th>
-        <th>SAP Module</th>
-        <th>Experience</th>
-        <th>Location</th>
-        <th>Expected CTC</th>
-        <th>Availability</th>
-        <th>Resume</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</section>
-
-<!-- Job Postings -->
-<section id="job-postings">
-  <h2>Posted Jobs</h2>
-  <p>Companies can view SAP job openings.</p>
-
-  <div class="apply-container">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSe4Ff_8M3Z0Apwq5M8UCyCNa0zJwTafUVg6nnihjgqOFeSDlQ/viewform?usp=header"
-      width="100%" height="700">
-      Loading…
-    </iframe>
-  </div>
-
-  <table id="jobs-table">
-    <thead>
-      <tr>
-        <th>Job Title</th>
-        <th>Company</th>
-        <th>Module</th>
-        <th>Experience Required</th>
-        <th>Location</th>
-        <th>Salary</th>
-        <th>Notice Period</th>
-        <th>Apply Link</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</section>
-
-<section id="about">
-  <h2>About</h2>
-  <p>This portal connects SAP candidates with companies efficiently.</p>
-</section>
-
-<footer>
-  &copy; 2025 SAP Job Portal. All Rights Reserved.
-</footer>
-
-<script>
-// Candidate Data
-document.addEventListener('DOMContentLoaded', function() {
-  const candidatesJsonUrl = "https://opensheet.elk.sh/2PACX-1vQV6t8q11XKosHHTfvJkQGgnWok7sftAdew2ewMLTb0WDIjxyMqMxJ4n-_pXsKRbn2QUBp7xzK0GOTp/Form%20Responses%201";
-  const tableBody = document.querySelector('#candidates-table tbody');
-  const filters
+    <div class="footer mt-5">
+      <p>© 2025 SAP Job Portal. All rights reserved.</p>
+    </div>
+  </section>
+</body>
+</html>
