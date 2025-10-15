@@ -3,51 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Company Login | SAP Job Portal</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      background-color: #f8fafc;
-      font-family: 'Inter', sans-serif;
-    }
-    .login-card {
-      max-width: 400px;
-      margin: 10vh auto;
-      padding: 2rem;
-      border-radius: 1rem;
-      background-color: white;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-    }
-    .btn-primary {
-      background-color: #2563eb;
-      border-color: #2563eb;
-    }
-    .btn-primary:hover {
-      background-color: #1e40af;
-    }
-  </style>
+  <title>SAP Job Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="login-card">
-    <h3 class="text-center mb-4">🏢 Company Login</h3>
+<body class="bg-gray-100 font-sans">
 
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email">
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter password">
-    </div>
+  <!-- Header -->
+  <header class="bg-blue-800 text-white p-4 text-center text-2xl font-bold">
+    SAP Job Portal
+  </header>
 
-    <button class="btn btn-primary w-100 mb-3" id="loginBtn">Login</button>
-    <button class="btn btn-outline-primary w-100" id="signupBtn">Create Account</button>
-
-    <p class="text-center mt-3"><a href="../index.html">⬅ Back to Home</a></p>
+  <!-- Tabs -->
+  <div class="flex justify-center mt-4 space-x-4">
+    <button id="candidateTab" class="bg-blue-600 text-white px-4 py-2 rounded">Candidate Login</button>
+    <button id="companyTab" class="bg-gray-400 text-white px-4 py-2 rounded">Company Login</button>
   </div>
+
+  <!-- Candidate Section -->
+  <section id="candidateSection" class="max-w-md mx-auto mt-6 bg-white p-6 rounded-lg shadow-md hidden">
+    <h2 class="text-xl font-semibold mb-4 text-center">Candidate Sign-Up / Login</h2>
+    <input type="email" id="candidateEmail" placeholder="Email" class="border w-full mb-2 p-2 rounded" />
+    <input type="password" id="candidatePassword" placeholder="Password" class="border w-full mb-4 p-2 rounded" />
+    <button id="candidateSignup" class="bg-blue-600 w-full text-white py-2 rounded mb-2">Sign Up</button>
+    <button id="candidateLogin" class="bg-green-600 w-full text-white py-2 rounded">Login</button>
+    <p id="candidateMessage" class="text-center text-sm mt-2"></p>
+  </section>
+
+  <!-- Company Section -->
+  <section id="companySection" class="max-w-md mx-auto mt-6 bg-white p-6 rounded-lg shadow-md hidden">
+    <h2 class="text-xl font-semibold mb-4 text-center">Company Sign-Up / Login</h2>
+    <input type="email" id="companyEmail" placeholder="Email" class="border w-full mb-2 p-2 rounded" />
+    <input type="password" id="companyPassword" placeholder="Password" class="border w-full mb-4 p-2 rounded" />
+    <button id="companySignup" class="bg-blue-600 w-full text-white py-2 rounded mb-2">Sign Up</button>
+    <button id="companyLogin" class="bg-green-600 w-full text-white py-2 rounded">Login</button>
+    <p id="companyMessage" class="text-center text-sm mt-2"></p>
+  </section>
 
   <!-- Firebase SDK -->
   <script type="module">
@@ -67,32 +57,83 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    const loginBtn = document.getElementById("loginBtn");
-    const signupBtn = document.getElementById("signupBtn");
+    // Toggle sections
+    const candidateTab = document.getElementById("candidateTab");
+    const companyTab = document.getElementById("companyTab");
+    const candidateSection = document.getElementById("candidateSection");
+    const companySection = document.getElementById("companySection");
 
-    loginBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    candidateTab.addEventListener("click", () => {
+      candidateSection.classList.remove("hidden");
+      companySection.classList.add("hidden");
+      candidateTab.classList.add("bg-blue-600");
+      companyTab.classList.remove("bg-blue-600");
+    });
 
+    companyTab.addEventListener("click", () => {
+      companySection.classList.remove("hidden");
+      candidateSection.classList.add("hidden");
+      companyTab.classList.add("bg-blue-600");
+      candidateTab.classList.remove("bg-blue-600");
+    });
+
+    // Candidate Auth
+    const candidateSignup = document.getElementById("candidateSignup");
+    const candidateLogin = document.getElementById("candidateLogin");
+    const candidateEmail = document.getElementById("candidateEmail");
+    const candidatePassword = document.getElementById("candidatePassword");
+    const candidateMessage = document.getElementById("candidateMessage");
+
+    candidateSignup.addEventListener("click", async () => {
       try {
-        await signInWithEmailAndPassword(auth, email, password);
-        alert("Login successful!");
-        window.location.href = "dashboard.html";
+        await createUserWithEmailAndPassword(auth, candidateEmail.value, candidatePassword.value);
+        candidateMessage.textContent = "✅ Candidate registered successfully!";
+        candidateMessage.classList.add("text-green-600");
       } catch (error) {
-        alert(error.message);
+        candidateMessage.textContent = error.message;
+        candidateMessage.classList.add("text-red-600");
       }
     });
 
-    signupBtn.addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
+    candidateLogin.addEventListener("click", async () => {
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("Account created successfully!");
-        window.location.href = "dashboard.html";
+        await signInWithEmailAndPassword(auth, candidateEmail.value, candidatePassword.value);
+        candidateMessage.textContent = "✅ Candidate logged in successfully!";
+        candidateMessage.classList.add("text-green-600");
+        // TODO: Redirect to Candidate Dashboard
       } catch (error) {
-        alert(error.message);
+        candidateMessage.textContent = error.message;
+        candidateMessage.classList.add("text-red-600");
+      }
+    });
+
+    // Company Auth
+    const companySignup = document.getElementById("companySignup");
+    const companyLogin = document.getElementById("companyLogin");
+    const companyEmail = document.getElementById("companyEmail");
+    const companyPassword = document.getElementById("companyPassword");
+    const companyMessage = document.getElementById("companyMessage");
+
+    companySignup.addEventListener("click", async () => {
+      try {
+        await createUserWithEmailAndPassword(auth, companyEmail.value, companyPassword.value);
+        companyMessage.textContent = "✅ Company registered successfully!";
+        companyMessage.classList.add("text-green-600");
+      } catch (error) {
+        companyMessage.textContent = error.message;
+        companyMessage.classList.add("text-red-600");
+      }
+    });
+
+    companyLogin.addEventListener("click", async () => {
+      try {
+        await signInWithEmailAndPassword(auth, companyEmail.value, companyPassword.value);
+        companyMessage.textContent = "✅ Company logged in successfully!";
+        companyMessage.classList.add("text-green-600");
+        // TODO: Redirect to Company Dashboard
+      } catch (error) {
+        companyMessage.textContent = error.message;
+        companyMessage.classList.add("text-red-600");
       }
     });
   </script>
